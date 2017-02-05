@@ -16,7 +16,9 @@ public class TestDriver {
 	
 	public static void openBrowser(String browser)
     {
-        switch (browser.toLowerCase())
+		driver = new ChromeDriver();
+		
+        /*switch (browser.toLowerCase())
         {
             case "firefox":
                 driver = new FirefoxDriver();
@@ -33,7 +35,7 @@ public class TestDriver {
             default:
                 driver = new ChromeDriver();
                 break;
-        }
+        }*/
     }
 	
 	public static void navigateToUrl(String url)

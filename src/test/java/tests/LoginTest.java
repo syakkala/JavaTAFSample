@@ -5,12 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.annotations.AfterSuite;
 
 import bl.pages.DashboardPage;
 import bl.pages.LoginPage;
 import core.TestDriver;
 
-public class LoginTests {
+public class LoginTest {
 	
 	@BeforeTest
 	public void openBrowserAndNavigate()
@@ -28,6 +29,12 @@ public class LoginTests {
 	
 	@AfterTest
 	public void quit()
+	{
+		TestDriver.quit();
+	}
+	
+	@AfterSuite
+	public void quits()
 	{
 		TestDriver.quit();
 	}

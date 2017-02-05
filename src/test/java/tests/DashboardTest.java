@@ -8,23 +8,23 @@ import org.testng.annotations.Test;
 import bl.pages.*;
 import core.TestDriver;
 
-public class DashboardTests {
+public class DashboardTest {
 
-	@BeforeTest
+	//@BeforeTest
 	public void openBrowserAndNavigate()
 	{
 		TestDriver.openBrowser("chrome");
 		DashboardPage.navigate();
 	}
 	
-	@Test
+	//@Test
 	public void dashboard()
 	{
 		LoginPage.login("subbarao_yakkala@mcafee.com", "asdf1234");
 		Assert.assertEquals("My Account",DashboardPage.title());
 	}
 	
-	@AfterTest
+	//@AfterTest
 	public void quit()
 	{
 		TestDriver.quit();
