@@ -1,0 +1,12 @@
+<suite name="Default Test Suite">
+	<test name="Login Tests">
+		<classes>
+			<class name="tests.LoginTests"></class>
+		</classes>
+	</test>
+	<test name="Dashboard Tests">
+		<classes>
+			<class name="tests.DashboardTests"></class>
+		</classes>
+	</test>
+</suite>
