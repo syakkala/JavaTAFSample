@@ -1,23 +1,36 @@
 package bl.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import core.TestDriver;
 
 public class DashboardPage {
 	
-	private static WebElement dashBoardTitle()
+	@FindBy(xpath="//*[@id='bdy']/h1")
+	public WebElement accountTitle;
+	
+	@FindBy(xpath="//*[@id='ctl00_m_HeaderFullNavigation_ucDashBoardPersonalNav_m_accountDropdown']/span/ul/li[5]/a")
+	public WebElement updateProfileLink;
+	
+	@FindBy(xpath="//*[@id=\"ctl00_m_HeaderFullNavigation_ucDashBoardPersonalNav_PersonalNavigation\"]/li[3]/a")
+	public WebElement logOut;
+	
+	WebDriver driver;
+	
+	public DashboardPage(WebDriver driver)
 	{
-		return TestDriver.findElementByClassName("dashB");
-	}
-
-	public static String title()
-	{
-		return DashboardPage.dashBoardTitle().getText();
+		this.driver = driver;
 	}
 	
-	public static void navigate()
-    {
-        TestDriver.navigateToUrl("https://home.mcafee.com/Secure/MyAccount/DashBoard.aspx");
-    }
+	public String getTitle()
+	{
+		return accountTitle.getText();
+	}
+	
+	public void doLogOut()
+	{
+		logOut.click();
+	}
 }

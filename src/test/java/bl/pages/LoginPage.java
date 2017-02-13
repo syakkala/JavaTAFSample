@@ -1,60 +1,39 @@
 package bl.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import bl.model.Login;
-import core.TestDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 	
-	public static WebElement userIDText()
+	@FindBy(id="UserID")
+	public WebElement userId;
+	
+	@FindBy(id="Password")
+	public WebElement password;
+	
+	@FindBy(name="btnLogin")
+	public WebElement login;
+	
+	@FindBy(name="btnCreateAccount")
+	public WebElement createAccount;
+	
+	WebDriver driver;
+	
+	public LoginPage(WebDriver driver)
 	{
-		return TestDriver.findElementById("UserID");
+		this.driver = driver;
 	}
 	
-	public static WebElement passwordText()
+	public DashboardPage doLogin(String userId, String password)
 	{
-		return TestDriver.findElementById("Password");
+		this.userId.clear();
+		this.userId.sendKeys(userId);
+		this.password.clear();
+		this.password.sendKeys(password);
+		login.click();
+		return PageFactory.initElements(driver, DashboardPage.class);
 	}
-	
-	public static WebElement loginButton()
-	{
-		return TestDriver.findElementByName("btnLogin");
-	}
-	
-	public static WebElement registerNowButton()
-	{
-		return TestDriver.findElementByName("btnCreateAccount");
-	}
-	
-	public static void navigate()
-    {
-        TestDriver.navigateToUrl("https://home.mcafee.com/secure/protected/login.aspx");
-    }
-	
-	private static void fillForm(Login loginInfo)
-    {
-        TestDriver.enterText(LoginPage.userIDText(), loginInfo.email);
-        TestDriver.enterText(LoginPage.passwordText(), loginInfo.password);
-    }
-	
-	private static void submitForm()
-    {
-        TestDriver.click(LoginPage.loginButton());
-    }
-
-    public static void login(String email, String password)
-    {
-        Login loginInfo = new Login();
-        loginInfo.email = email;
-        loginInfo.password = password;
-        fillForm(loginInfo);
-        submitForm();
-    }
-
-    public static void clickRegisterNowButton()
-    {
-        TestDriver.click(LoginPage.registerNowButton());
-    }
 
 }

@@ -1,51 +1,29 @@
 package tests.ui;
 
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterSuite;
 
 import bl.pages.DashboardPage;
 import bl.pages.LoginPage;
-import core.TestDriver;
 
-public class LoginTest {
+public class LoginTest extends TestBase {
 	
 	@BeforeTest
-	public void openBrowserAndNavigate()
+	public void openBrowser()
 	{
-		TestDriver.openBrowser("chrome");
-		LoginPage.navigate();
+		driver.get("https://home.mcafee.com/secure/protected/login.aspx");
 	}
-	
-	@Test(priority=3, groups={"high"})
-	public void login()
+
+	@Test(groups={"ui","mcLogin","login","high"})
+	public void mcLogin()
 	{
-		LoginPage.login("02052017@mcafee.com", "Poiu0987");
-		Assert.assertEquals("My Account",DashboardPage.title());
-		//System.out.println("Login1");
-		//Assert.fail();
+		LoginPage lp = PageFactory.initElements(driver, LoginPage.class);
+		DashboardPage dp = lp.doLogin("tafsample@mcafee.com", "Poiu0987");
+		Assert.assertEquals("My Account",dp.getTitle());
+		dp.doLogOut();
 	}
-	
-	@Test(priority=1, dependsOnMethods={"login3"},alwaysRun=true)
-	public void login2()
-	{
-		System.out.println("Login2");
-	}
-	
-	@Test(priority=2, groups={"low"})
-	public void login3()
-	{
-		System.out.println("Login3");
-	}
-	
-	@AfterTest
-	public void quit()
-	{
-		TestDriver.quit();
-	}
-	
 }
