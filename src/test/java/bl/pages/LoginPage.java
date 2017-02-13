@@ -35,5 +35,4 @@ public class LoginPage {
 		login.click();
 		return PageFactory.initElements(driver, DashboardPage.class);
 	}
-
 }
