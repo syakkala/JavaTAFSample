@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite" parallel="classes" thread-count="2">
+
 	<test name="UI Test">
+		<groups>
+			<run>
+				<include name="high"></include>
+			</run>
+		</groups>
 		<classes>
 			<class name="tests.ui.LoginTest" />
-		</classes>
-	</test> <!-- Test -->
-	<test name="service Test">
-		<classes>
-			<class name="tests.service.WeatherTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

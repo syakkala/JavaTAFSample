@@ -13,21 +13,22 @@ public class DashboardTest {
 	@BeforeTest
 	public void openBrowserAndNavigate()
 	{
-		TestDriver.openBrowser("chrome");
-		DashboardPage.navigate();
+		//TestDriver.openBrowser("chrome");
+		//DashboardPage.navigate();
 	}
 	
-	@Test
+	@Test(priority=1, groups={"low"})
 	public void dashboard()
 	{
-		LoginPage.login("subbarao_yakkala@mcafee.com", "asdf1234");
+		LoginPage.login("02052017@mcafee.com", "Poiu0987");
 		Assert.assertEquals("My Account",DashboardPage.title());
+		//System.out.println("dashboard");
 	}
 	
 	@AfterTest
 	public void quit()
 	{
-		TestDriver.quit();
+		//TestDriver.quit();
 	}
 	
 }

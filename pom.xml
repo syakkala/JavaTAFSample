@@ -28,6 +28,23 @@
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<!-- TestNG-xslt related configuration. -->
+			<plugin>
+				<groupId>org.reportyng</groupId>
+				<artifactId>reporty-ng</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<!-- Output directory for the testng xslt report -->
+					<outputDir>/target/testng-xslt-report</outputDir>
+					<sortTestCaseLinks>true</sortTestCaseLinks>
+					<testDetailsFilter>FAIL,SKIP,PASS,CONF,BY_CLASS</testDetailsFilter>
+					<showRuntimeTotals>true</showRuntimeTotals>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
