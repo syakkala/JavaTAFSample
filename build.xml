@@ -82,7 +82,6 @@
             ant run will execute the test
         </echo>
     </target>
-
 	<path id="test.c">
 	        <fileset dir="${ws.jars}" includes="*.jar"/>
 	</path>
