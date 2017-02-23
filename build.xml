@@ -97,7 +97,4 @@
 	            <param name="testNgXslt.showRuntimeTotals" expression="true"/>
 	        </xslt>
 	    </target>
-
-    
- 
 </project>
